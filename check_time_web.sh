@@ -2,7 +2,7 @@
 
 # check_time_web.sh Check load time web for nagios. By Pablo Serrano
 # This plugin check if website load is more that normal parameters. You can change variables how website, header, useragent, etc 
-#  
+# This script need curl for working. 
 #  
 #  Version 1.0
 
