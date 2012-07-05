@@ -1,5 +1,7 @@
-This is first version of my homemade plugins for Nagios Projects, the new
-plugins are: 
+This is first version of my homemade plugins for Nagios.
 
 
+List plugins added
+
+check_time_web.sh Check load time web for nagios. This plugin check if website load is more that normal parameters. You can change variables how website, header, useragent, etc 
 
