@@ -47,7 +47,7 @@ Other options include:
   --help    : Display this help""")
     else:
         print ("Unknown option. Try --help")
-    sys.exit()
+    sys.exit(3)
 else:
     host = sys.argv[1]
     port = int(sys.argv[2])
