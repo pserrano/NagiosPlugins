@@ -6,5 +6,8 @@ List plugins added
 check_time_web.sh: Check load time web for nagios. This plugin check if website load is more that normal parameters. You can change variables how website, header, useragent, etc. This script needs Curl installed on your system. 
 
 
+checkports.py : Basic check port for your servers, this check test open port, dns problem, timeout. 
+This script works with python 3 and 2.x
+
 Add more plugins soon!
 
