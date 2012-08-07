@@ -1,19 +1,12 @@
 #!/usr/bin/env python
 
 """
-Chequeo básico de puertos por segundos para NAGIOS. Esto hace un check
-de los puertos en tiempo de espera para ver el estado
-
-Modo de uso:
-
-checkports.py host puerto TiempoEspera
-
+Checkports.py : Basic check port for nagios
 By Pablo Serrano 2012
 
-Version 1.0
+Version 1.1
 
 """
-
 import socket
 import sys
 
@@ -23,20 +16,41 @@ def chequeo(direccion, puerto, espera):
         socket.gethostbyname(direccion)
         c = socket.create_connection((direccion, puerto), espera)
         c.close()
-        print ("OK - Conexion funcional")
+        print ("OK - Connection GOOD!")
         sys.exit(0)
     except socket.gaierror:
-        print ("Critical - Error de Dns")
+        print ("Critical - DNS Error")
         sys.exit(2)
     except socket.error:
-        print ("Critical - Error de conexion")
+        print ("Critical - Connection Error")
         sys.exit(2)
     except socket.timeout:
-        print ("Critical - Error de timeout")
+        print ("Critical - Timeout Error")
         sys.exit(2)
+#Program start here
+if sys.argv[1].startswith('--'):
+    option = sys.argv[1][2:]
+    # fetch sys.argv[1] but without the first two characters
+    if option == 'version':
+            print ("Version 1.1")
+    elif option == 'help':
+            print ("""\
+This program makes basic check port
+Usage:
+     
+     checkports.py host port Timewait
+      
+     ex: checkports.py google.com 80 5
 
-host = sys.argv[1]
-port = int(sys.argv[2])
-timesec = int(sys.argv[3])
+Other options include:
+  --version : Prints the version number
+  --help    : Display this help""")
+    else:
+        print ("Unknown option. Try --help")
+    sys.exit()
+else:
+    host = sys.argv[1]
+    port = int(sys.argv[2])
+    timesec = int(sys.argv[3])
 
 chequeo(host, port, timesec)
