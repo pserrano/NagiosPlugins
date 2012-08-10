@@ -27,10 +27,10 @@ def chequeo(direccion, puerto, espera):
     except socket.timeout:
         print ("Critical - Timeout Error")
         sys.exit(2)
-#Program start here
+
+
 if sys.argv[1].startswith('--'):
     option = sys.argv[1][2:]
-    # fetch sys.argv[1] but without the first two characters
     if option == 'version':
             print ("Version 1.1")
     elif option == 'help':
